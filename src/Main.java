@@ -1,3 +1,5 @@
+import com.sun.jdi.InconsistentDebugInfoException;
+
 public class Main {
     public static void main(String[] args) {
         task1();
@@ -19,30 +21,33 @@ public class Main {
         yearCalculation(year);
     }
 
-    public static void parameterFeed(int year, int clientsOS) {
+    public static String parameterFeed(int year, int clientsOS) {
         System.out.println("Задача 2");
         int clientDeviceYear = 2015;
         if (year > clientDeviceYear && clientsOS == 0){
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке.");}
+           return "Установите облегченную версию приложения для iOS по ссылке.";}
         else if (year > clientDeviceYear && clientsOS == 1){
-            System.out.println("Установите облегченную версию приложения для Android по ссылке.");}
+            return "Установите облегченную версию приложения для Android по ссылке.";}
         else if (year <= clientDeviceYear && clientsOS == 0){
-            System.out.println("Установите версию приложения для IOS по ссылке.");}
-        else if (year <= clientDeviceYear && clientsOS == 1){
-            System.out.println("Установите версию приложения для Android по ссылке.");}
+            return "Установите версию приложения для IOS по ссылке.";}
+        else if (year <= clientDeviceYear && clientsOS == 1) {
+            return "Установите версию приложения для Android по ссылке.";}
+        else
+            return "Неверный параметр";
     }
 
     public static void task2() {
         int clientOS = 1;
         int year = 2015;
-        parameterFeed(year, clientOS);
+        String res = parameterFeed(year, clientOS);
+        System.out.println(res);
+
     }
 
     public static String amountOfDays(int distance) {
         System.out.println("Задача 3 ");
         int days = 1;
-        if (distance < 20);
-         else if (distance > 20 && distance <= 60) {
+        if (distance > 20 && distance <= 60) {
             days++;
         }
         if (distance > 60 && distance <= 100) {
@@ -54,6 +59,7 @@ public class Main {
     }
 
     public static void task3() {
-        System.out.println(amountOfDays(109));
+        String res = amountOfDays(10);
+        System.out.println(res);
     }
 }
